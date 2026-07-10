@@ -68,6 +68,12 @@
   width: 100%;
 }
 
+@media (max-width: 1023px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -126,6 +132,12 @@
     max-width: 380px;
     margin-inline: auto;
     width: 100%;
+  }
+
+  .actions :global(.btn) {
+    height: 46px;
+    padding-inline: 1.5rem;
+    font-size: 0.9375rem;
   }
 }
 
