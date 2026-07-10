@@ -227,14 +227,14 @@
 
 @media (max-width: 640px) {
   .pill {
-    left: calc(100% + 6px);
-    padding: 5px 10px;
-    font-size: 0.75rem;
+    left: calc(100% + 7px);
+    padding: 7px 13px;
+    font-size: 0.875rem;
   }
 
   .dotHit {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
   }
 }
 
