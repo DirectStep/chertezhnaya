@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { navLinks } from '../../data/content';
-import OrbShape from '../OrbShape/OrbShape';
 import s from './MobileMenu.module.css';
 
 type Props = { open: boolean; onClose: () => void };
@@ -25,35 +24,31 @@ export default function MobileMenu({ open, onClose }: Props) {
   if (!open) return null;
 
   return (
-    <div
-      ref={ref}
-      id="mobile-menu"
-      className={s.menu}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Меню"
-    >
-      <OrbShape size={220} className={s.menuOrb} />
-
-      <button type="button" className={s.close} onClick={onClose} aria-label="Закрыть меню">
-        <span />
-        <span />
-      </button>
-
-      <nav aria-label="Мобильная навигация">
-        <ul className={s.list}>
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} className={s.link} onClick={onClose}>
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <a href="#contact" className="btn btnPrimary" onClick={onClose}>
-        Обсудить проект
-      </a>
-    </div>
+    <>
+      <div className={s.backdrop} onClick={onClose} aria-hidden="true" />
+      <div
+        ref={ref}
+        id="mobile-menu"
+        className={s.panel}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Меню"
+      >
+        <nav aria-label="Мобильная навигация">
+          <ul className={s.list}>
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className={s.link} onClick={onClose}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <a href="#contact" className={`btn btnPrimary ${s.cta}`} onClick={onClose}>
+          Обсудить проект
+        </a>
+      </div>
+    </>
   );
 }

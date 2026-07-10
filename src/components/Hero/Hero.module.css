@@ -141,9 +141,15 @@
   }
 }
 
+@media (max-width: 640px) {
+  .art {
+    max-width: 320px;
+    transform: scale(0.6);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .art {
-    transform: none;
     transition: none;
   }
 }
