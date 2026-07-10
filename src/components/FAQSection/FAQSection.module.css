@@ -1,0 +1,147 @@
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: calc(var(--header-h) + 30px);
+}
+
+.watermark {
+  position: absolute;
+  top: -3.5rem;
+  left: -1rem;
+  font-size: 11rem;
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--line-light);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.head .eyebrow {
+  color: var(--text-muted-dark);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-bottom: 1px solid var(--line-light);
+}
+
+.question {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 1.5rem 0;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: clamp(1.0625rem, 1.5vw, 1.3125rem);
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.trigger:hover {
+  color: var(--blue);
+}
+
+.qNum {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--violet);
+}
+
+.qText {
+  flex: 1;
+}
+
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.icon::before,
+.icon::after {
+  content: '';
+  position: absolute;
+  inset: 50% auto auto 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s ease;
+}
+
+.icon::after {
+  transform: rotate(90deg);
+}
+
+.iconOpen::after {
+  transform: rotate(0deg);
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.panelOpen {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  overflow: hidden;
+}
+
+.answer {
+  padding-bottom: 1.5rem;
+  padding-left: calc(0.875rem + 1.25rem);
+  max-width: 42em;
+  color: color-mix(in srgb, var(--text-dark) 65%, transparent);
+  font-size: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .icon::before,
+  .icon::after {
+    transition: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .head {
+    position: static;
+  }
+
+  .watermark {
+    display: none;
+  }
+}

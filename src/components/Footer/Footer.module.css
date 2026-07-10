@@ -1,0 +1,65 @@
+.footer {
+  background: var(--bg-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-block: 2.5rem calc(2.5rem + env(safe-area-inset-bottom));
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.875rem;
+}
+
+.logo {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.copy {
+  font-size: var(--fs-small);
+  color: color-mix(in srgb, var(--text-light) 50%, transparent);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.link {
+  font-size: 0.9375rem;
+  text-decoration: none;
+  color: color-mix(in srgb, var(--text-light) 70%, transparent);
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--text-light);
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.policy {
+  font-size: var(--fs-small);
+  color: color-mix(in srgb, var(--text-light) 45%, transparent);
+}
+
+@media (max-width: 767px) {
+  .inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

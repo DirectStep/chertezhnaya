@@ -1,0 +1,216 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-padding-top: calc(var(--header-h) + 24px);
+}
+
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-top: calc(var(--header-h-mobile) + 20px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(72px, 9vw, 144px);
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  background:
+    linear-gradient(90deg, transparent calc(100% - 1px), rgba(17, 17, 20, 0.45) calc(100% - 1px)),
+    linear-gradient(transparent calc(100% - 1px), rgba(17, 17, 20, 0.45) calc(100% - 1px));
+  background-size: 96px 96px;
+  mask-image: linear-gradient(180deg, transparent, black 16%, black 84%, transparent);
+}
+
+.sectionDark::before,
+.sectionDark2::before {
+  background:
+    linear-gradient(90deg, transparent calc(100% - 1px), rgba(248, 247, 244, 0.35) calc(100% - 1px)),
+    linear-gradient(transparent calc(100% - 1px), rgba(248, 247, 244, 0.35) calc(100% - 1px));
+  background-size: 96px 96px;
+}
+
+.section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.sectionDark {
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.sectionDark2 {
+  background: var(--bg-dark-secondary);
+  color: var(--text-light);
+}
+
+.sectionLight {
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.sectionTitle {
+  font-size: var(--fs-h2);
+  line-height: 0.98;
+  max-width: 14em;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted-dark);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+  transform-origin: left center;
+  animation: drawEyebrow 0.9s ease both;
+}
+
+.sectionDark .eyebrow,
+.sectionDark2 .eyebrow {
+  color: var(--text-muted-light);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--btn-height);
+  padding-inline: 2rem;
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.btnPrimary {
+  background: var(--gradient-accent);
+  color: var(--text-light);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(79, 70, 229, 0.35);
+}
+
+.btnGhost {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+}
+
+.btnGhost:hover {
+  border-color: var(--violet);
+  box-shadow: 0 0 0 1px var(--violet) inset;
+}
+
+@keyframes drawEyebrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow::before {
+    animation: none;
+  }
+
+  .btn,
+  .btnPrimary:hover {
+    transition: none;
+    transform: none;
+  }
+}

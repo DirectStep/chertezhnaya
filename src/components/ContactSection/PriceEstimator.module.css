@@ -1,0 +1,126 @@
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background:
+    linear-gradient(145deg, rgba(139, 92, 246, 0.14), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 54px rgba(0, 0, 0, 0.18);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.eyebrow {
+  color: var(--violet-bright);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--text-light) 78%, transparent);
+}
+
+.field select {
+  padding: 0.58rem 0.75rem;
+  min-height: 40px;
+  color: var(--text-light);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: rgba(10, 10, 15, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+}
+
+.field select option {
+  color: var(--text-dark);
+  background: var(--bg-light-card);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.addons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.addonsLabel {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--text-light) 78%, transparent);
+}
+
+.addonsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 0.75rem;
+}
+
+.addon {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, var(--text-light) 82%, transparent);
+  cursor: pointer;
+}
+
+.addon input {
+  width: 17px;
+  height: 17px;
+  margin-top: 0.1em;
+  accent-color: var(--violet);
+  flex-shrink: 0;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.15rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.resultLabel {
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--text-light) 60%, transparent);
+}
+
+.resultValue {
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: var(--violet-bright);
+}
+
+@media (max-width: 520px) {
+  .row,
+  .addonsGrid {
+    grid-template-columns: 1fr;
+  }
+}

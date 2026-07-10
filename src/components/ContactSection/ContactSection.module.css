@@ -1,0 +1,289 @@
+.section {
+  padding-block: clamp(44px, 5vw, 76px);
+  background: var(--bg-dark-secondary);
+  color: var(--text-light);
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  background:
+    radial-gradient(60% 100% at 90% 0%, rgba(139, 92, 246, 0.3), transparent 60%),
+    radial-gradient(50% 90% at 4% 100%, rgba(79, 70, 229, 0.24), transparent 60%),
+    var(--bg-dark-card);
+  border: 1px solid var(--line-dark);
+  border-radius: 22px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: clamp(1.125rem, 2.2vw, 1.75rem);
+}
+
+.title {
+  font-size: clamp(1.55rem, 2.65vw, 2.15rem);
+  line-height: 1.04;
+}
+
+.subtitle {
+  max-width: 34em;
+  color: color-mix(in srgb, var(--text-light) 68%, transparent);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items: stretch;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.035)),
+    rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 54px rgba(0, 0, 0, 0.18);
+  isolation: isolate;
+  transition:
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    transform 0.28s ease;
+}
+
+.form::before {
+  content: '';
+  position: absolute;
+  inset: -28%;
+  z-index: -1;
+  background:
+    radial-gradient(42% 42% at 24% 22%, rgba(139, 92, 246, 0.34), transparent 68%),
+    radial-gradient(46% 42% at 86% 70%, rgba(56, 189, 248, 0.24), transparent 70%);
+  opacity: 0;
+  transform: scale(0.96);
+  transition:
+    opacity 0.34s ease,
+    transform 0.34s ease;
+}
+
+.form:hover,
+.form:focus-within {
+  border-color: rgba(139, 92, 246, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 22px 62px rgba(79, 70, 229, 0.18);
+  transform: translateY(-1px);
+}
+
+.form:hover::before,
+.form:focus-within::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.field label,
+.field > span {
+  font-weight: 700;
+  font-size: 0.8125rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip {
+  padding: 0.4rem 0.75rem;
+  color: color-mix(in srgb, var(--text-light) 78%, transparent);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: rgba(10, 10, 15, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.chip:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.chipActive {
+  color: var(--text-light);
+  background: var(--violet);
+  border-color: var(--violet);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.15rem;
+}
+
+.field input,
+.field textarea,
+.field select {
+  padding: 0.58rem 0.875rem;
+  min-height: 40px;
+  background: rgba(10, 10, 15, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 92px;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--violet);
+  background: rgba(13, 13, 20, 0.62);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.16);
+  outline: none;
+}
+
+.field input[aria-invalid='true'],
+.field textarea[aria-invalid='true'] {
+  border-color: var(--violet-bright);
+}
+
+.field select option {
+  background: var(--bg-dark-secondary);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: color-mix(in srgb, var(--text-light) 38%, transparent);
+}
+
+.error {
+  font-size: var(--fs-small);
+  color: var(--violet-bright);
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+
+.consent input {
+  width: 20px;
+  height: 20px;
+  margin-top: 0.2em;
+  accent-color: var(--violet);
+  flex-shrink: 0;
+}
+
+.consent label {
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--text-light) 75%, transparent);
+}
+
+.submit {
+  align-self: flex-start;
+  min-width: 184px;
+  height: 48px;
+  margin-top: 0.15rem;
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: var(--radius-md);
+}
+
+.successTitle {
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+}
+
+.successText {
+  color: color-mix(in srgb, var(--text-light) 72%, transparent);
+}
+
+.metaStrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  margin-top: clamp(1.25rem, 3vw, 2.25rem);
+  padding-top: clamp(1.125rem, 2.2vw, 1.5rem);
+  border-top: 1px solid var(--line-dark);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metaLabel {
+  font-size: var(--fs-small);
+  color: color-mix(in srgb, var(--text-light) 50%, transparent);
+}
+
+.metaValue {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a.metaValue:hover {
+  color: var(--violet-bright);
+}
+
+@media (max-width: 1023px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
