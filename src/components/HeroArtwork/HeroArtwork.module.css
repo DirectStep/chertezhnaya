@@ -225,6 +225,12 @@
   transform: translateY(-50%) scale(1.05);
 }
 
+@media (max-width: 640px) {
+  .orbPath {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .orb,
   .orbPath,
