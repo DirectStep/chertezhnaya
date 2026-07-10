@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { ORB_BLOB_D } from '../../data/orbShape';
 import PriceCalculator from './PriceCalculator';
 import s from './HeroArtwork.module.css';
 
@@ -21,9 +22,6 @@ const outerDots: OrbitDot[] = [
 
 const ACTIVATION_RADIUS = 220;
 const MAX_SCALE = 2.125;
-
-const ORB_BLOB_D =
-  'M 186.95 100.00 C 185.10 110.21 174.43 119.86 168.42 128.34 C 162.41 136.82 157.49 144.00 150.90 150.90 C 144.31 157.80 137.37 165.30 128.89 169.74 C 120.41 174.19 110.27 176.02 100.00 177.56 C 89.73 179.10 77.26 181.94 67.28 178.99 C 57.31 176.04 45.46 168.56 40.15 159.85 C 34.84 151.14 36.94 136.73 35.41 126.75 C 33.88 116.78 32.81 109.69 30.95 100.00 C 29.10 90.31 22.69 78.54 24.29 68.64 C 25.90 58.74 33.11 47.76 40.59 40.59 C 48.07 33.42 59.29 28.79 69.19 25.62 C 79.09 22.45 90.37 20.02 100.00 21.56 C 109.63 23.10 118.57 30.20 126.98 34.86 C 135.39 39.53 141.70 44.18 150.46 49.54 C 159.22 54.91 173.45 58.65 179.54 67.05 C 185.62 75.46 188.81 89.79 186.95 100.00 Z';
 
 export default function HeroArtwork() {
   const [calcOpen, setCalcOpen] = useState(false);

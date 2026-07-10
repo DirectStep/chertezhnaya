@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { navLinks, services } from '../../data/content';
+import { ORB_BLOB_D } from '../../data/orbShape';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import s from './Header.module.css';
 
@@ -62,7 +63,21 @@ export default function Header() {
     <header className={`${s.header} ${themeClass} ${scrolledClass}`}>
       <div className={`container ${s.inner}`}>
         <a href="#top" className={s.logo}>
-          <span className={s.logoMark} aria-hidden="true" />
+          <svg className={s.logoMark} viewBox="0 0 200 200" aria-hidden="true">
+            <defs>
+              <radialGradient id="logoOrbBase" cx="50%" cy="45%" r="65%">
+                <stop offset="0%" stopColor="#8b5cf6" />
+                <stop offset="56%" stopColor="#4f46e5" />
+                <stop offset="100%" stopColor="#14122a" />
+              </radialGradient>
+              <radialGradient id="logoOrbHighlight" cx="30%" cy="24%" r="48%">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.85" />
+                <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            <path className={s.logoMarkPath} d={ORB_BLOB_D} fill="url(#logoOrbBase)" />
+            <path className={s.logoMarkPath} d={ORB_BLOB_D} fill="url(#logoOrbHighlight)" style={{ mixBlendMode: 'screen' }} />
+          </svg>
           <span className={s.logoText}>ЧЕРТЁЖНАЯ</span>
         </a>
         <nav className={s.nav} aria-label="Основная навигация">
