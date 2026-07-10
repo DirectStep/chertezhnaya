@@ -28,10 +28,11 @@ function validate(data: LeadData): Errors {
   const contact = data.contact.trim();
   const phoneOk = /^\+?[\d\s()-]{7,}$/.test(contact);
   const telegramOk = /^@?[a-zA-Z0-9_]{4,}$/.test(contact);
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
   if (!contact) {
-    errors.contact = 'Укажите телефон или ник в Telegram';
-  } else if (!phoneOk && !telegramOk) {
-    errors.contact = 'Похоже на опечатку — проверьте номер или ник';
+    errors.contact = 'Укажите Telegram, телефон или почту';
+  } else if (!phoneOk && !telegramOk && !emailOk) {
+    errors.contact = 'Похоже на опечатку — проверьте контакт';
   }
   if (data.message.trim().length < 10) {
     errors.message = 'Расскажите о задаче хотя бы в паре предложений';
@@ -110,12 +111,12 @@ export default function ContactForm() {
         </div>
 
         <div className={s.field}>
-          <label htmlFor="lead-contact">Телефон или Telegram</label>
+          <label htmlFor="lead-contact">Telegram, телефон или почта</label>
           <input
             id="lead-contact"
             type="text"
             autoComplete="tel"
-            placeholder="+7 900 000-00-00 или @nickname"
+            placeholder="@nickname, +7 900 000-00-00 или email"
             value={data.contact}
             onChange={(e) => set('contact', e.target.value)}
             aria-invalid={Boolean(errors.contact)}
@@ -163,17 +164,25 @@ export default function ContactForm() {
       </div>
 
       <div className={s.footer}>
-        <div className={s.consent}>
-          <input
-            id="lead-consent"
-            type="checkbox"
-            checked={data.consent}
-            onChange={(e) => set('consent', e.target.checked)}
-            aria-invalid={Boolean(errors.consent)}
-            aria-describedby={errors.consent ? 'lead-consent-error' : undefined}
-          />
-          <label htmlFor="lead-consent">Согласен на обработку персональных данных</label>
-        </div>
+        <label className={s.consent} htmlFor="lead-consent">
+          <span className={s.checkboxWrap}>
+            <input
+              id="lead-consent"
+              type="checkbox"
+              className={s.checkboxInput}
+              checked={data.consent}
+              onChange={(e) => set('consent', e.target.checked)}
+              aria-invalid={Boolean(errors.consent)}
+              aria-describedby={errors.consent ? 'lead-consent-error' : undefined}
+            />
+            <span className={`${s.checkboxBox} ${data.consent ? s.checkboxBoxChecked : ''}`} aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none">
+                <path d="M3 8.5L6.5 12L13 4.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </span>
+          <span>Согласен на обработку персональных данных</span>
+        </label>
 
         <button
           type="submit"

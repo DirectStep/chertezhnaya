@@ -86,16 +86,27 @@ export default function PriceEstimator() {
       <div className={s.addons}>
         <span className={s.addonsLabel}>Дополнительно</span>
         <div className={s.addonsGrid}>
-          {addonOptions.map((addon) => (
-            <label key={addon.key} className={s.addon}>
-              <input
-                type="checkbox"
-                checked={addons.includes(addon.key)}
-                onChange={() => toggleAddon(addon.key)}
-              />
-              <span>{addon.label}</span>
-            </label>
-          ))}
+          {addonOptions.map((addon) => {
+            const checked = addons.includes(addon.key);
+            return (
+              <label key={addon.key} className={s.addon}>
+                <span className={s.checkboxWrap}>
+                  <input
+                    type="checkbox"
+                    className={s.checkboxInput}
+                    checked={checked}
+                    onChange={() => toggleAddon(addon.key)}
+                  />
+                  <span className={`${s.checkboxBox} ${checked ? s.checkboxBoxChecked : ''}`} aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8.5L6.5 12L13 4.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </span>
+                <span>{addon.label}</span>
+              </label>
+            );
+          })}
         </div>
       </div>
 

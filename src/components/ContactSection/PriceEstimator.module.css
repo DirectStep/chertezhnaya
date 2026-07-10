@@ -2,13 +2,13 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  padding: clamp(1rem, 2vw, 1.5rem);
+  gap: 0.6rem;
+  padding: clamp(0.85rem, 1.6vw, 1.15rem);
   background:
     linear-gradient(145deg, rgba(139, 92, 246, 0.14), rgba(255, 255, 255, 0.03)),
     rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 18px;
+  border-radius: 16px;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 18px 54px rgba(0, 0, 0, 0.18);
@@ -17,39 +17,39 @@
 .head {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
 }
 
 .eyebrow {
   color: var(--violet-bright);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .title {
-  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.28rem;
-  font-size: 0.8125rem;
+  gap: 0.22rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: color-mix(in srgb, var(--text-light) 78%, transparent);
 }
 
 .field select {
-  padding: 0.58rem 0.75rem;
-  min-height: 40px;
+  padding: 0.42rem 0.625rem;
+  min-height: 34px;
   color: var(--text-light);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   background: rgba(10, 10, 15, 0.42);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
+  border-radius: 9px;
 }
 
 .field select option {
@@ -60,17 +60,17 @@
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .addons {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.3rem;
 }
 
 .addonsLabel {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: color-mix(in srgb, var(--text-light) 78%, transparent);
 }
@@ -78,42 +78,79 @@
 .addonsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.4rem 0.75rem;
+  gap: 0.3rem 0.625rem;
 }
 
 .addon {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.8125rem;
+  gap: 0.4rem;
+  font-size: 0.75rem;
   color: color-mix(in srgb, var(--text-light) 82%, transparent);
   cursor: pointer;
 }
 
-.addon input {
-  width: 17px;
-  height: 17px;
+.checkboxWrap {
+  position: relative;
+  width: 15px;
+  height: 15px;
   margin-top: 0.1em;
-  accent-color: var(--violet);
   flex-shrink: 0;
+}
+
+.checkboxInput {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkboxBox {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 10, 15, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.checkboxBox svg {
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.checkboxBoxChecked {
+  background: var(--violet);
+  border-color: var(--violet);
+}
+
+.checkboxBoxChecked svg {
+  opacity: 1;
 }
 
 .result {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  margin-top: 0.15rem;
-  padding-top: 0.75rem;
+  gap: 0.15rem;
+  margin-top: 0.1rem;
+  padding-top: 0.55rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .resultLabel {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   color: color-mix(in srgb, var(--text-light) 60%, transparent);
 }
 
 .resultValue {
-  font-size: 1.375rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--violet-bright);
 }
