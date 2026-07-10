@@ -46,7 +46,7 @@
 
 .orb {
   position: absolute;
-  inset: 13%;
+  inset: 20%;
   overflow: visible;
   filter: drop-shadow(0 22px 55px rgba(79, 70, 229, 0.4));
   animation:

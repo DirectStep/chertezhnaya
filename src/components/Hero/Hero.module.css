@@ -129,9 +129,9 @@
 
 @media (max-width: 1023px) {
   .art {
-    max-width: 380px;
+    width: min(100%, 380px);
     margin-inline: auto;
-    width: 100%;
+    justify-self: center;
   }
 
   .actions :global(.btn) {
@@ -143,7 +143,7 @@
 
 @media (max-width: 640px) {
   .art {
-    max-width: 320px;
+    width: min(100%, 320px);
     transform: scale(0.6);
   }
 }
