@@ -60,10 +60,15 @@ export default function PriceCalculator({ onClose }: { onClose: () => void }) {
         </label>
 
         <div className={s.result}>
-          <span className={s.resultLabel}>Приблизительно</span>
-          <span className={s.resultValue}>
-            от {formatPrice(price)} ₽{service.monthly ? ' / мес' : ''}
-          </span>
+          <a href="#contact" className={s.applyBtn} onClick={onClose}>
+            Заявка
+          </a>
+          <div className={s.resultText}>
+            <span className={s.resultLabel}>Приблизительно</span>
+            <span className={s.resultValue}>
+              от {formatPrice(price)} ₽{service.monthly ? ' / мес' : ''}
+            </span>
+          </div>
         </div>
       </div>
     </div>
