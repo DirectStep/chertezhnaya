@@ -314,6 +314,7 @@
   .checkboxWrap {
     width: 22px;
     height: 22px;
+    margin-top: 0;
   }
 
   .checkboxBox svg {
@@ -322,6 +323,7 @@
   }
 
   .addon {
+    align-items: center;
     padding-block: 0.25rem;
   }
 

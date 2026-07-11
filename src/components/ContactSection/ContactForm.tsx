@@ -43,15 +43,33 @@ function validate(data: LeadData): Errors {
   return errors;
 }
 
-/* Точка подключения реального API: заменить setTimeout на fetch к бэкенду */
-function submitLead(_data: LeadData): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, 700));
+const WEB3FORMS_ACCESS_KEY = '114bdbf5-61cd-4c16-b6f9-7d54a1a7c4b7';
+
+async function submitLead(data: LeadData): Promise<boolean> {
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: 'Новая заявка с сайта ЧЕРТЁЖНАЯ',
+        name: data.name,
+        contact: data.contact,
+        budget: data.budget || 'Не указан',
+        message: data.message,
+      }),
+    });
+    const result = await res.json();
+    return Boolean(result.success);
+  } catch {
+    return false;
+  }
 }
 
 export default function ContactForm() {
   const [data, setData] = useState<LeadData>(emptyLead);
   const [errors, setErrors] = useState<Errors>({});
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const set = <K extends keyof LeadData>(key: K, value: LeadData[K]) => {
     setData((prev) => ({ ...prev, [key]: value }));
@@ -64,8 +82,8 @@ export default function ContactForm() {
     setErrors(nextErrors);
     if (Object.values(nextErrors).some(Boolean)) return;
     setStatus('submitting');
-    await submitLead(data);
-    setStatus('success');
+    const ok = await submitLead(data);
+    setStatus(ok ? 'success' : 'error');
   };
 
   if (status === 'success') {
@@ -201,6 +219,11 @@ export default function ContactForm() {
       {errors.consent && (
         <p id="lead-consent-error" className={s.error}>
           {errors.consent}
+        </p>
+      )}
+      {status === 'error' && (
+        <p className={s.error} role="alert">
+          Не получилось отправить заявку. Попробуйте ещё раз или напишите нам напрямую в Telegram.
         </p>
       )}
     </form>

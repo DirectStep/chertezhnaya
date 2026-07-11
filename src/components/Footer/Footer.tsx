@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className={s.footer}>
       <div className={`container ${s.inner}`}>
         <div className={s.brand}>
-          <span className={s.logo}>STUDIO</span>
+          <span className={s.logo}>ЧЕРТЁЖНАЯ</span>
           <span className={s.copy}>© {new Date().getFullYear()}</span>
         </div>
         <nav aria-label="Навигация в подвале">
