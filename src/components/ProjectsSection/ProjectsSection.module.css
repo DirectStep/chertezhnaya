@@ -238,8 +238,10 @@
   word-break: normal;
 }
 
-.titleNoBreak {
-  white-space: nowrap;
+@media (min-width: 1024px) {
+  .titleNoBreak {
+    white-space: nowrap;
+  }
 }
 
 .year {
@@ -475,6 +477,7 @@
 
   .cardTitle {
     font-size: clamp(1.9rem, 10vw, 3rem);
+    overflow-wrap: break-word;
   }
 
   .body {

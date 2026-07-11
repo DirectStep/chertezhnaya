@@ -1,10 +1,10 @@
 export type ServiceKey = 'dev' | 'brand' | 'concept' | 'support';
 
 export const serviceOptions: { key: ServiceKey; label: string; base: number; monthly?: boolean }[] = [
-  { key: 'dev', label: 'Разработка сайта', base: 220000 },
-  { key: 'brand', label: 'Брендинг и фирменный стиль', base: 120000 },
-  { key: 'concept', label: 'Формирование концепции', base: 90000 },
-  { key: 'support', label: 'Поддержка после запуска', base: 70000, monthly: true },
+  { key: 'dev', label: 'Разработка сайта', base: 30000 },
+  { key: 'brand', label: 'Брендинг и фирменный стиль', base: 20000 },
+  { key: 'concept', label: 'Формирование концепции', base: 20000 },
+  { key: 'support', label: 'Поддержка после запуска', base: 15000, monthly: true },
 ];
 
 export const volumeOptions = [

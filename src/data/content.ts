@@ -144,8 +144,8 @@ export const services: Service[] = [
       'Интеграция с CRM, аналитикой и формами',
       'Запуск на боевом домене с проверкой скорости',
     ],
-    duration: 'от 21 дня',
-    price: 'от 220 000 ₽',
+    duration: 'от 5 дней',
+    price: 'от 30 000 ₽',
   },
   {
     title: 'Брендинг и фирменный стиль',
@@ -155,8 +155,8 @@ export const services: Service[] = [
       'Цвет, типографика и графические элементы',
       'Гайдлайн для использования на всех носителях',
     ],
-    duration: 'от 14 дней',
-    price: 'от 120 000 ₽',
+    duration: 'от 5 дней',
+    price: 'от 20 000 ₽',
   },
   {
     title: 'Формирование концепции (сайта, IT-продукта)',
@@ -166,8 +166,8 @@ export const services: Service[] = [
       'Прототип на реальном контенте',
       'Требования для дизайна и разработки',
     ],
-    duration: 'от 10 дней',
-    price: 'от 90 000 ₽',
+    duration: 'от 4 дней',
+    price: 'от 20 000 ₽',
   },
   {
     title: 'Поддержка после запуска',
@@ -178,7 +178,7 @@ export const services: Service[] = [
       'Ежемесячный отчет по скорости и стабильности',
     ],
     duration: 'от 1 месяца',
-    price: 'от 70 000 ₽ / мес',
+    price: 'от 15 000 ₽ / мес',
   },
 ];
 
@@ -274,7 +274,7 @@ export const faqItems: FAQItemData[] = [
 
 export const contacts = {
   email: 'taskinpochta@mail.ru',
-  telegram: '@studio_team',
+  telegram: '@iamanastagrigoryan',
   hours: 'Пн-пт, 10:00-19:00 (МСК)',
 };
 
