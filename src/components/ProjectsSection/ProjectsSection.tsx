@@ -1,14 +1,10 @@
-import { useState } from 'react';
-import { projects, type Project } from '../../data/content';
+import { projects } from '../../data/content';
 import ProjectCard from './ProjectCard';
-import ProjectDialog from './ProjectDialog';
 import s from './ProjectsSection.module.css';
 
 export default function ProjectsSection() {
-  const [openProject, setOpenProject] = useState<Project | null>(null);
-
   return (
-    <section id="works" data-theme="light" className="section sectionLight">
+    <section id="works" data-theme="light" className={`section sectionLight ${s.section}`}>
       <div className="container">
         <div className={s.head} data-reveal>
           <p className="eyebrow">Кейсы</p>
@@ -19,12 +15,10 @@ export default function ProjectsSection() {
             <ProjectCard
               key={project.id}
               project={project}
-              onOpen={() => setOpenProject(project)}
             />
           ))}
         </div>
       </div>
-      <ProjectDialog project={openProject} onClose={() => setOpenProject(null)} />
     </section>
   );
 }

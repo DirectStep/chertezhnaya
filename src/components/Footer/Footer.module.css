@@ -52,9 +52,24 @@
   gap: 1.5rem;
 }
 
+.legal {
+  display: flex;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
 .policy {
   font-size: var(--fs-small);
   color: color-mix(in srgb, var(--text-light) 45%, transparent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.policy:hover {
+  color: var(--text-light);
 }
 
 @media (max-width: 767px) {

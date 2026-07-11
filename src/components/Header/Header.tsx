@@ -58,9 +58,11 @@ export default function Header() {
 
   const themeClass = theme === 'light' ? s.onLight : '';
   const scrolledClass = scrolled ? (theme === 'light' ? s.scrolledLight : s.scrolledDark) : '';
+  const isCasePage = window.location.hash.startsWith('#/case/');
+  const activeLink = isCasePage ? '#works' : active;
 
   return (
-    <header className={`${s.header} ${themeClass} ${scrolledClass}`}>
+    <header className={`${s.header} ${themeClass} ${scrolledClass} ${isCasePage ? s.secondary : ''}`}>
       <div className={`container ${s.inner}`}>
         <a href="#top" className={s.logo}>
           <OrbShape size={38} />
@@ -75,7 +77,7 @@ export default function Header() {
                 <li key={link.href} className={isServices ? s.navItemServices : undefined}>
                   <a
                     href={link.href}
-                    className={`${s.navLink} ${active === link.href ? s.navLinkActive : ''}`}
+                    className={`${s.navLink} ${activeLink === link.href ? s.navLinkActive : ''}`}
                     aria-haspopup={isServices ? 'true' : undefined}
                   >
                     {link.label}

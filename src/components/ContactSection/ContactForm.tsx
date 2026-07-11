@@ -181,7 +181,13 @@ export default function ContactForm() {
               </svg>
             </span>
           </span>
-          <span>Согласен на обработку персональных данных</span>
+          <span>
+            Даю согласие на обработку персональных данных и ознакомлен(а) с{' '}
+            <a href="#/privacy" className={s.consentLink} onClick={(e) => e.stopPropagation()}>
+              Политикой конфиденциальности и обработки персональных данных
+            </a>
+            .
+          </span>
         </label>
 
         <button
