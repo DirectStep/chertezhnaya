@@ -4,7 +4,7 @@ import s from './ServicesSection.module.css';
 
 export default function ServicesSection() {
   return (
-    <section id="services" data-theme="light" className="section sectionLight">
+    <section id="services" data-theme="light" className={`section sectionLight ${s.section}`}>
       <div className="container">
         <div className={s.head} data-reveal>
           <p className="eyebrow">Услуги</p>
