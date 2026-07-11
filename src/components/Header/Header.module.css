@@ -50,9 +50,8 @@
 
 .logoText {
   color: currentColor;
-  font-family: var(--font-heading);
-  font-size: clamp(1.0625rem, 1.55vw, 1.3125rem);
-  font-weight: 400;
+  font-size: clamp(1rem, 1.45vw, 1.25rem);
+  font-weight: 800;
   letter-spacing: 0;
   white-space: nowrap;
 }

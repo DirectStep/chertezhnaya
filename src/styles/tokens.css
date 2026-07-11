@@ -21,9 +21,8 @@
   --gradient-accent: linear-gradient(135deg, var(--blue) 0%, var(--violet) 100%);
 
   --font-main: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-heading: 'Gerhaus', Georgia, 'Times New Roman', serif;
 
-  --fs-h1: clamp(2.75rem, 7vw, 6.5rem);
+  --fs-h1: clamp(2.475rem, 6.3vw, 5.85rem);
   --fs-h2: clamp(2.25rem, 4.8vw, 4.25rem);
   --fs-card: clamp(1.5rem, 2.4vw, 2.125rem);
   --fs-body: clamp(1rem, 1.05vw, 1.1875rem);
