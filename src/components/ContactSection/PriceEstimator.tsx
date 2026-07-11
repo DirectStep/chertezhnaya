@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { type CSSProperties, useMemo, useState } from 'react';
 import {
   type ServiceKey,
   formatPrice,
@@ -64,7 +64,10 @@ export default function PriceEstimator() {
       <div className={s.row}>
         <div className={`${s.field} ${s.volumeField}`}>
           <span>Объем проекта</span>
-          <div className={s.rangeBox}>
+          <div
+            className={s.rangeBox}
+            style={{ '--range-progress': `${volumeProgress}%` } as CSSProperties}
+          >
             <input
               type="range"
               className={s.range}
@@ -74,9 +77,6 @@ export default function PriceEstimator() {
               value={volumeOptions.findIndex((o) => o.key === volumeKey)}
               onChange={(e) => setVolumeKey(volumeOptions[Number(e.target.value)].key)}
               aria-label="Объем проекта"
-              style={{
-                background: `linear-gradient(90deg, var(--violet-bright) ${volumeProgress}%, rgba(255, 255, 255, 0.14) ${volumeProgress}%)`,
-              }}
             />
             <div className={s.rangeMarks} aria-hidden="true">
               {volumeOptions.map((option, index) => (

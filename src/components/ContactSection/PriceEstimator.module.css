@@ -69,23 +69,40 @@
 
 .rangeBox {
   position: relative;
-  padding-block: 0.25rem 0.1rem;
+  height: 18px;
+}
+
+.rangeBox::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  z-index: 0;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--violet-bright) var(--range-progress),
+    rgba(255, 255, 255, 0.14) var(--range-progress)
+  );
+  border-radius: 999px;
+  transform: translateY(-50%);
 }
 
 .range {
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 6px;
+  height: 18px;
   display: block;
   appearance: none;
   border-radius: 999px;
   cursor: pointer;
+  background: transparent !important;
 }
 
 .range::-webkit-slider-thumb {
   width: 18px;
-  height: 6px;
+  height: 18px;
   appearance: none;
   background: var(--text-light);
   border: 4px solid var(--violet-bright);
@@ -104,9 +121,10 @@
 
 .rangeMarks {
   position: absolute;
-  inset: 0 0 auto;
-  top: 0.25rem;
-  height: 18px;
+  inset-inline: 0;
+  top: 50%;
+  z-index: 2;
+  height: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -119,6 +137,7 @@
   background: #252331;
   border: 2px solid rgba(255, 255, 255, 0.28);
   border-radius: 50%;
+  transform: translateY(-50%);
 }
 
 .rangeMarks span:first-child,
