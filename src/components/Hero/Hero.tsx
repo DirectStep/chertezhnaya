@@ -21,11 +21,11 @@ export default function Hero() {
         <div className={s.content}>
           <p className="eyebrow">Разработка сайтов</p>
           <h1 className={s.title}>
-            Проектируем сайты
+            Проектируем <span className="accent">сайты</span>
             <br />
             и доводим их
             <br />
-            до релиза
+            до <span className="accent">релиза</span>
           </h1>
           <p className={s.lead}>
             Исследуем задачу, строим структуру и сценарии, делаем интерфейс и разработку,

@@ -3,10 +3,15 @@
   inset: 10px 0 auto;
   z-index: 50;
   color: var(--text-light);
+  background: linear-gradient(rgba(9, 9, 13, 0.45), rgba(9, 9, 13, 0.1) 80%, transparent);
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
     color 0.3s ease;
+}
+
+.onLight.header {
+  background: linear-gradient(rgba(243, 241, 236, 0.5), rgba(243, 241, 236, 0.12) 80%, transparent);
 }
 
 .onLight {

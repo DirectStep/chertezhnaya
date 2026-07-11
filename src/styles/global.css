@@ -56,10 +56,15 @@ h1,
 h2,
 h3 {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: -0.01em;
   text-wrap: balance;
+}
+
+.accent {
+  color: var(--violet-bright);
+  font-style: italic;
 }
 
 ul {
