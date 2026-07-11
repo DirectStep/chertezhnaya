@@ -63,7 +63,7 @@ export default function Header() {
     <header className={`${s.header} ${themeClass} ${scrolledClass}`}>
       <div className={`container ${s.inner}`}>
         <a href="#top" className={s.logo}>
-          <OrbShape size={36} />
+          <OrbShape size={38} />
           <span className={s.logoText}>ЧЕРТЁЖНАЯ</span>
         </a>
         <nav className={s.nav} aria-label="Основная навигация">
