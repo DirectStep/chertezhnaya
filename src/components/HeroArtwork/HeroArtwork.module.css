@@ -226,6 +226,10 @@
 }
 
 @media (max-width: 640px) {
+  .orb {
+    inset: 24%;
+  }
+
   .pill {
     left: calc(100% + 7px);
     padding: 7px 13px;
