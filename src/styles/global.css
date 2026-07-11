@@ -24,6 +24,31 @@ html {
   }
 }
 
+@media (min-width: 1024px) {
+  html {
+    scrollbar-color: var(--violet) #232228;
+    scrollbar-width: thin;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #232228;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--violet);
+    border: 3px solid #232228;
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--violet-bright);
+  }
+}
+
 body {
   font-family: var(--font-main);
   font-size: var(--fs-body);
