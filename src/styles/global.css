@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Gerhaus';
+  src: url('../assets/fonts/Gerhaus-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gerhaus';
+  src: url('../assets/fonts/Gerhaus-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -56,7 +72,7 @@ h1,
 h2,
 h3 {
   font-family: var(--font-heading);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1;
   letter-spacing: -0.01em;
   text-wrap: balance;

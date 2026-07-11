@@ -52,7 +52,7 @@
   color: currentColor;
   font-family: var(--font-heading);
   font-size: clamp(1.0625rem, 1.55vw, 1.3125rem);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0;
   white-space: nowrap;
 }

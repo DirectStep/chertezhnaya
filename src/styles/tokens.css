@@ -21,7 +21,7 @@
   --gradient-accent: linear-gradient(135deg, var(--blue) 0%, var(--violet) 100%);
 
   --font-main: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-heading: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-heading: 'Gerhaus', Georgia, 'Times New Roman', serif;
 
   --fs-h1: clamp(2.75rem, 7vw, 6.5rem);
   --fs-h2: clamp(2.25rem, 4.8vw, 4.25rem);
