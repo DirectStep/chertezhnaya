@@ -26,6 +26,8 @@ export default function PriceEstimator() {
   const service = serviceOptions.find((o) => o.key === serviceKey)!;
   const volume = volumeOptions.find((o) => o.key === volumeKey)!;
   const urgency = urgencyOptions.find((o) => o.key === urgencyKey)!;
+  const volumeIndex = volumeOptions.findIndex((o) => o.key === volumeKey);
+  const volumeProgress = (volumeIndex / (volumeOptions.length - 1)) * 100;
 
   const toggleAddon = (key: AddonKey) => {
     setAddons((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
@@ -73,12 +75,12 @@ export default function PriceEstimator() {
               onChange={(e) => setVolumeKey(volumeOptions[Number(e.target.value)].key)}
               aria-label="Объем проекта"
               style={{
-                background: `linear-gradient(90deg, var(--violet-bright) ${(volumeOptions.findIndex((o) => o.key === volumeKey) / (volumeOptions.length - 1)) * 100}%, rgba(255, 255, 255, 0.14) ${(volumeOptions.findIndex((o) => o.key === volumeKey) / (volumeOptions.length - 1)) * 100}%)`,
+                background: `linear-gradient(90deg, var(--violet-bright) ${volumeProgress}%, rgba(255, 255, 255, 0.14) ${volumeProgress}%)`,
               }}
             />
             <div className={s.rangeMarks} aria-hidden="true">
-              {volumeOptions.map((option) => (
-                <span key={option.key} />
+              {volumeOptions.map((option, index) => (
+                <span key={option.key} className={index <= volumeIndex ? s.rangeMarkActive : ''} />
               ))}
             </div>
           </div>
@@ -139,6 +141,9 @@ export default function PriceEstimator() {
         <span className={s.resultLabel}>Приблизительно</span>
         <span key={price} className={s.resultValue}>
           от {formatPrice(price)} ₽{service.monthly ? ' / мес' : ''}
+        </span>
+        <span className={s.resultNote}>
+          Расчёт предварительный — точную смету подготовим после обсуждения задачи.
         </span>
       </div>
     </div>
