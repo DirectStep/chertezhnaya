@@ -1,3 +1,7 @@
+.section {
+  padding-block: clamp(24px, 3vw, 40px);
+}
+
 .head {
   display: flex;
   flex-direction: column;

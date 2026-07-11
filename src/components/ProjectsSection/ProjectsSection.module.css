@@ -1,3 +1,7 @@
+.section {
+  padding-block: clamp(24px, 3vw, 40px);
+}
+
 .head {
   display: flex;
   flex-direction: column;
@@ -13,6 +17,19 @@
 
 .card {
   min-width: 0;
+  display: flex;
+}
+
+.card[data-case='yaroslavl-restaurant'] {
+  --case-accent: #e76f51;
+}
+
+.card[data-case='taskin'] {
+  --case-accent: #54c7d8;
+}
+
+.card[data-case='peanut'] {
+  --case-accent: #9770ff;
 }
 
 .card:nth-child(3) {
@@ -22,13 +39,15 @@
 .cardButton {
   position: relative;
   width: 100%;
+  height: 100%;
+  box-sizing: border-box;
   min-height: clamp(430px, 42vw, 620px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
   overflow: hidden;
-  padding: clamp(2rem, 4vw, 4rem);
+  padding: clamp(1.5rem, 2.8vw, 2.75rem);
   color: var(--text-light);
   text-align: left;
   background: #111114;
@@ -36,10 +55,19 @@
   border-radius: 12px;
   cursor: pointer;
   isolation: isolate;
+  text-decoration: none;
 }
 
 .card:nth-child(3) .cardButton {
-  min-height: clamp(380px, 32vw, 520px);
+  min-height: clamp(460px, 34vw, 580px);
+}
+
+.card:nth-child(3) .visualLayer {
+  height: clamp(220px, 24vw, 340px);
+}
+
+.card:nth-child(3) .top {
+  padding-top: clamp(265px, 28vw, 370px);
 }
 
 .cardButton::before,
@@ -65,23 +93,33 @@
 }
 
 .cardButton {
-  outline: 1px solid transparent;
-  outline-offset: -12px;
+  outline: none;
+  box-shadow: none;
   transition:
-    outline-color 0.25s ease,
+    box-shadow 0.35s ease,
     transform 0.25s ease;
 }
 
 .cardButton:hover {
-  outline-color: rgba(248, 247, 244, 0.24);
   transform: translateY(-2px);
+}
+
+.card[data-case] .cardButton:hover,
+.card[data-case] .cardButton:focus-visible {
+  box-shadow:
+    0 0 34px color-mix(in srgb, var(--case-accent) 30%, transparent),
+    0 0 82px color-mix(in srgb, var(--case-accent) 16%, transparent);
 }
 
 .visualLayer {
   position: absolute;
-  inset: 0;
+  inset: 1.25rem 1.25rem auto;
   z-index: -2;
+  width: calc(100% - 2.5rem);
+  height: clamp(190px, 22vw, 300px);
   background: #1d2025;
+  border-radius: 10px;
+  object-fit: cover;
   transition: transform 0.55s ease;
 }
 
@@ -181,17 +219,27 @@
 
 .top {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
   align-items: flex-start;
+  min-width: 0;
+  padding-top: clamp(235px, 24vw, 330px);
 }
 
 .cardTitle {
-  max-width: 8em;
-  font-size: clamp(2.35rem, 4.8vw, 5rem);
+  max-width: 100%;
+  min-width: 0;
+  font-size: clamp(2rem, 3.4vw, 3.6rem);
   font-weight: 500;
   line-height: 0.96;
   letter-spacing: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.titleNoBreak {
+  white-space: nowrap;
 }
 
 .year {
@@ -205,6 +253,9 @@
   border-radius: 999px;
   font-size: 0.875rem;
   font-weight: 700;
+  align-self: flex-end;
+  flex: 0 0 auto;
+  order: -1;
 }
 
 .year::before {
@@ -216,7 +267,11 @@
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   gap: clamp(1rem, 3vw, 3rem);
-  align-items: end;
+  align-items: start;
+  height: clamp(13.5rem, 16vw, 15.5rem);
+  min-height: 0;
+  box-sizing: border-box;
+  padding-bottom: 3.5rem;
 }
 
 .category,
@@ -228,6 +283,7 @@
 
 .category {
   font-weight: 700;
+  color: color-mix(in srgb, var(--case-accent, var(--text-light)) 82%, var(--text-light));
 }
 
 .desc {
@@ -256,10 +312,20 @@
     transform 0.24s ease;
 }
 
+.moreArrow {
+  display: inline-block;
+  transition: transform 0.24s ease;
+}
+
 .cardButton:hover .more,
 .cardButton:focus-visible .more {
   opacity: 1;
   transform: translateY(0);
+}
+
+.cardButton:hover .moreArrow,
+.cardButton:focus-visible .moreArrow {
+  transform: translateX(4px);
 }
 
 .meta {
@@ -345,7 +411,54 @@
 
   .body {
     grid-template-columns: 1fr;
+    height: auto;
+    min-height: 13.5rem;
     padding-right: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card:nth-child(-n + 2) .cardButton {
+    min-height: clamp(365px, 35.7vw, 527px);
+  }
+
+  .card:nth-child(-n + 2) .top {
+    padding-top: clamp(200px, 20.4vw, 280px);
+  }
+
+  .card:nth-child(-n + 2) .body {
+    height: clamp(9.625rem, calc(13.6vw - 30px), 11.325rem);
+  }
+
+  .card:nth-child(-n + 2) .cardButton {
+    padding-bottom: max(0px, calc(clamp(1.5rem, 2.8vw, 2.75rem) - 30px));
+  }
+
+  .card[data-case='yaroslavl-restaurant'] .cardTitle {
+    transform: translateY(-3.25rem);
+  }
+
+  .card[data-case='peanut'] .cardButton {
+    min-height: clamp(345px, 28.9vw, 435px);
+  }
+
+  .card[data-case='peanut'] .visualLayer {
+    height: clamp(115px, 14.25vw, 205px);
+  }
+
+  .card[data-case='peanut'] .top {
+    padding-top: clamp(149px, 16.5vw, 228px);
+  }
+
+  .card[data-case='peanut'] .body {
+    height: calc(clamp(10.125rem, 12vw, 11.625rem) - 125px);
+    min-height: 0;
+    padding-bottom: 0;
+  }
+
+  .card:nth-child(-n + 2) .top,
+  .card:nth-child(-n + 2) .body {
+    transform: translateY(50px);
   }
 }
 
@@ -361,7 +474,7 @@
   }
 
   .cardTitle {
-    font-size: clamp(2.25rem, 12vw, 3.5rem);
+    font-size: clamp(1.9rem, 10vw, 3rem);
   }
 
   .body {
@@ -381,6 +494,10 @@
   }
 
   .cardButton:hover .visualLayer {
+    transform: none;
+  }
+
+  .cardButton:hover .moreArrow {
     transform: none;
   }
 }

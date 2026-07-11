@@ -1,15 +1,24 @@
 import type { Project } from '../../data/content';
 import s from './ProjectsSection.module.css';
 
-type Props = { project: Project; onOpen: () => void };
+type Props = { project: Project };
 
-export default function ProjectCard({ project, onOpen }: Props) {
+export default function ProjectCard({ project }: Props) {
   return (
-    <article className={`${s.card} ${s[`card_${project.id}`]}`} data-reveal>
-      <button type="button" className={s.cardButton} onClick={onOpen}>
-        <span className={s.visualLayer} aria-hidden="true" />
+    <article className={`${s.card} ${s[`card_${project.id}`]}`} data-case={project.id} data-reveal>
+      <a href={`#/case/${project.id}`} className={s.cardButton}>
+        <img className={s.visualLayer} src={project.cover} alt="" />
         <div className={s.top}>
-          <h3 className={s.cardTitle}>{project.title}</h3>
+          <h3 className={s.cardTitle}>
+            {project.id === 'yaroslavl-restaurant' ? (
+              <>
+                {project.title.split(' ')[0]}{' '}
+                <span className={s.titleNoBreak}>{project.title.split(' ').slice(1).join(' ')}</span>
+              </>
+            ) : (
+              project.title
+            )}
+          </h3>
           <span className={s.year}>{project.year}</span>
         </div>
         <div className={s.body}>
@@ -18,9 +27,9 @@ export default function ProjectCard({ project, onOpen }: Props) {
         </div>
         <span className={s.more}>
           Смотреть проект
-          <span aria-hidden="true"> →</span>
+          <span className={s.moreArrow} aria-hidden="true"> →</span>
         </span>
-      </button>
+      </a>
     </article>
   );
 }

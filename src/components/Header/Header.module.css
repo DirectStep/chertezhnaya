@@ -26,6 +26,13 @@
     color 0.3s ease;
 }
 
+.secondary {
+  background: rgba(9, 9, 13, 0.9);
+  border-bottom: 1px solid var(--line-dark);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
 .onLight.header {
   background: linear-gradient(rgba(243, 241, 236, 0.5), rgba(243, 241, 236, 0.12) 80%, transparent);
 }

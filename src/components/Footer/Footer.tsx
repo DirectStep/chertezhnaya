@@ -32,8 +32,18 @@ export default function Footer() {
           >
             {contacts.telegram}
           </a>
-          <span className={s.policy}>Политика конфиденциальности</span>
         </div>
+        <nav className={s.legal} aria-label="Документы сайта">
+          <a href="#/details" className={s.policy}>
+            Реквизиты ООО «ЧЕРТЁЖНАЯ»
+          </a>
+          <a href="#/privacy" className={s.policy}>
+            Политика конфиденциальности и обработки ПДн
+          </a>
+          <a href="#/consent" className={s.policy}>
+            Согласие на обработку персональных данных
+          </a>
+        </nav>
       </div>
     </footer>
   );

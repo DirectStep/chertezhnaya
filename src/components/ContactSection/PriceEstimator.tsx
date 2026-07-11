@@ -45,7 +45,7 @@ export default function PriceEstimator() {
     <div className={s.panel}>
       <div className={s.head}>
         <p className={s.eyebrow}>Калькулятор</p>
-        <h3 className={s.title}>Прикиньте бюджет</h3>
+        <h3 className={s.title}>Соберём проект по слоям</h3>
       </div>
 
       <label className={s.field}>
@@ -60,16 +60,41 @@ export default function PriceEstimator() {
       </label>
 
       <div className={s.row}>
-        <label className={s.field}>
+        <div className={`${s.field} ${s.volumeField}`}>
           <span>Объем проекта</span>
-          <select value={volumeKey} onChange={(e) => setVolumeKey(e.target.value)}>
-            {volumeOptions.map((o) => (
-              <option key={o.key} value={o.key}>
-                {o.label}
-              </option>
+          <div className={s.rangeBox}>
+            <input
+              type="range"
+              className={s.range}
+              min="0"
+              max={volumeOptions.length - 1}
+              step="1"
+              value={volumeOptions.findIndex((o) => o.key === volumeKey)}
+              onChange={(e) => setVolumeKey(volumeOptions[Number(e.target.value)].key)}
+              aria-label="Объем проекта"
+              style={{
+                background: `linear-gradient(90deg, var(--violet-bright) ${(volumeOptions.findIndex((o) => o.key === volumeKey) / (volumeOptions.length - 1)) * 100}%, rgba(255, 255, 255, 0.14) ${(volumeOptions.findIndex((o) => o.key === volumeKey) / (volumeOptions.length - 1)) * 100}%)`,
+              }}
+            />
+            <div className={s.rangeMarks} aria-hidden="true">
+              {volumeOptions.map((option) => (
+                <span key={option.key} />
+              ))}
+            </div>
+          </div>
+          <div className={s.rangeLabels} aria-label="Уровень объема проекта">
+            {volumeOptions.map((option) => (
+              <button
+                key={option.key}
+                type="button"
+                className={`${s.rangeLabel} ${volumeKey === option.key ? s.rangeLabelActive : ''}`}
+                onClick={() => setVolumeKey(option.key)}
+              >
+                {option.label}
+              </button>
             ))}
-          </select>
-        </label>
+          </div>
+        </div>
 
         <label className={s.field}>
           <span>Сроки</span>
@@ -89,7 +114,7 @@ export default function PriceEstimator() {
           {addonOptions.map((addon) => {
             const checked = addons.includes(addon.key);
             return (
-              <label key={addon.key} className={s.addon}>
+              <label key={addon.key} className={`${s.addon} ${checked ? s.addonActive : ''}`}>
                 <span className={s.checkboxWrap}>
                   <input
                     type="checkbox"
@@ -112,7 +137,7 @@ export default function PriceEstimator() {
 
       <div className={s.result}>
         <span className={s.resultLabel}>Приблизительно</span>
-        <span className={s.resultValue}>
+        <span key={price} className={s.resultValue}>
           от {formatPrice(price)} ₽{service.monthly ? ' / мес' : ''}
         </span>
       </div>
