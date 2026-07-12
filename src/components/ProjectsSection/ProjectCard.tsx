@@ -7,7 +7,7 @@ export default function ProjectCard({ project }: Props) {
   return (
     <article className={`${s.card} ${s[`card_${project.id}`]}`} data-case={project.id} data-reveal>
       <a href={`#/case/${project.id}`} className={s.cardButton}>
-        <img className={s.visualLayer} src={project.cover} alt="" />
+        <img className={s.visualLayer} src={project.cover} alt="" loading="lazy" />
         <div className={s.top}>
           <h3 className={s.cardTitle}>
             {project.id === 'yaroslavl-restaurant' ? (

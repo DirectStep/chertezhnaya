@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import ProcessSection from './components/ProcessSection/ProcessSection';
@@ -8,9 +8,11 @@ import TestimonialsSection from './components/TestimonialsSection/TestimonialsSe
 import FAQSection from './components/FAQSection/FAQSection';
 import ContactSection from './components/ContactSection/ContactSection';
 import Footer from './components/Footer/Footer';
-import CasePage from './components/CasePage/CasePage';
-import LegalPage, { type LegalPageKind } from './components/LegalPage/LegalPage';
 import { projects, type ProjectId } from './data/content';
+import type { LegalPageKind } from './components/LegalPage/LegalPage';
+
+const CasePage = lazy(() => import('./components/CasePage/CasePage'));
+const LegalPage = lazy(() => import('./components/LegalPage/LegalPage'));
 
 type AppRoute =
   | { type: 'home' }
@@ -43,14 +45,20 @@ export default function App() {
   }, []);
 
   if (route.type === 'legal') {
-    return <LegalPage kind={route.kind} />;
+    return (
+      <Suspense fallback={null}>
+        <LegalPage kind={route.kind} />
+      </Suspense>
+    );
   }
 
   if (route.type === 'case') {
     return (
       <>
         <Header />
-        <CasePage projectId={route.id} />
+        <Suspense fallback={null}>
+          <CasePage projectId={route.id} />
+        </Suspense>
         <Footer />
       </>
     );
